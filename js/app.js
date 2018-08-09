@@ -30,7 +30,10 @@ var allFeeds = [
 function init() {
     // Load the first feed we've defined (index of 0).
     loadFeed(0);
-    console.log(document.querySelector("a").className);
+
+    let divSelect = document.querySelectorAll("div")[2];
+    console.log(divSelect);
+    console.log(divSelect.querySelectorAll("a").length);
 }
 
 /* This function performs everything necessary to load a
