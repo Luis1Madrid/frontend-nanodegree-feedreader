@@ -44,11 +44,20 @@ $(function() {
     describe("The Menu", function() {
 
       it("HMTL Menu is hidden by default", function() {
+        expect(document.querySelector("body").className).toBe("menu-hidden");
 
-        expect($('body').hasClass('menu-hidden')).toBe(true);
       });
 
       it("Toggle menu from Hidden to unhidden", function() {
+        let classOnOff = document.querySelector("a");
+        let classHideShow = document.querySelector("body").className;
+
+        classOnOff.addEventListener("click", function(){});
+        classOnOff.click();
+        expect(document.querySelector("body").className).not.toBe("menu-hidden");
+
+        classOnOff.click();
+        expect(document.querySelector("body").className).toBe("menu-hidden");
 
       });
     });
