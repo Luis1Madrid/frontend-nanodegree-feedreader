@@ -29,7 +29,8 @@ $(function() {
               expect(typeof placeType).toBe("string");
             }
         });
-
+        // Test to loop through each feed in allFeeds object to make sure name
+        // is define and not empty.
         it("names are define and not empty", function() {
           let i;
           for (i = 0; i < allFeeds.length; i++){
@@ -43,11 +44,13 @@ $(function() {
 
     describe("The Menu", function() {
 
+      //Test if menu is hidden by default by looking into its class.
       it("HMTL Menu is hidden by default", function() {
         expect(document.querySelector("body").className).toBe("menu-hidden");
 
       });
-
+      //Test if Menu button works to hide/unhide, by searching on the DOM if class
+      //is toggle on and off.
       it("Toggle menu from Hidden to unhidden", function() {
         let classOnOff = document.querySelector("a");
         let classHideShow = document.querySelector("body").className;
@@ -63,12 +66,16 @@ $(function() {
     });
 
     describe("Initial Entries", function() {
+
+      //BeforeEach is used to asynchonously functions to make sure loadFeed
+      // is done loading.
       beforeEach(function(cb) {
         loadFeed(0, function(){
           cb();
         })
       });
 
+      //Test makes sure there is at least 1 entry on the .feed div DOM.
       it("At least 1 entry within .feed container", function() {
 
         let divSelect = document.querySelectorAll("div")[2];
@@ -79,20 +86,29 @@ $(function() {
       });
     });
 
+    describe("New Feed Selection", function() {
+      let firstFeed;
+      let secondFeed;
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+      //Load first and second .feed articles and makes sure it finish loading.
+      beforeEach(function(cb) {
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+        loadFeed(0, function(){
+          firstFeed = $(".feed").find(allFeeds.url);
+          cb();
+        });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+        loadFeed(1, function(){
+          secondFeed = $(".feed").find(allFeeds.url);
+          cb();
+        });
+      });
 
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+      // test if first and second .feed articles are distinct from one another.
+      it("New feeds are distinct from one another", function() {
+        expect(firstFeed).not.toBe(secondFeed);
+
+      });
+    });
+
 }());

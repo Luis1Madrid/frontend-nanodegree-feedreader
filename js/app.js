@@ -31,9 +31,6 @@ function init() {
     // Load the first feed we've defined (index of 0).
     loadFeed(0);
 
-    let divSelect = document.querySelectorAll("div")[2];
-    console.log(divSelect);
-    console.log(divSelect.querySelectorAll("a").length);
 }
 
 /* This function performs everything necessary to load a
