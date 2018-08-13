@@ -26,7 +26,7 @@ $(function() {
             for (i = 0; i < allFeeds.length; i++){
               let placeType = allFeeds[i].url;
               expect(placeType).toBeDefined();
-              expect(typeof placeType).toBe("string");
+              expect(placeType.length).toBeGreaterThan(0);
             }
         });
         // Test to loop through each feed in allFeeds object to make sure name
@@ -36,7 +36,7 @@ $(function() {
           for (i = 0; i < allFeeds.length; i++){
             let nameType = allFeeds[i].name;
             expect(nameType).toBeDefined();
-            expect(typeof nameType).toBe("string");
+            expect(nameType.length).toBeGreaterThan(0);
           }
         });
 
@@ -78,10 +78,7 @@ $(function() {
       //Test makes sure there is at least 1 entry on the .feed div DOM.
       it("At least 1 entry within .feed container", function() {
 
-        let divSelect = document.querySelectorAll("div")[2];
-        let aLength = divSelect.querySelectorAll("a").length;
-
-        expect(aLength).not.toBe(0);
+        expect($(".feed .entry-link").length).toBeGreaterThan(0);
 
       });
     });
@@ -95,13 +92,16 @@ $(function() {
 
         loadFeed(0, function(){
           firstFeed = $(".feed").find(allFeeds.url);
-          cb();
+          loadFeed(1, function() {
+            secondFeed = $(".feed").find(allFeeds.url);
+            cb();
+          });
         });
 
-        loadFeed(1, function(){
+        /*loadFeed(1, function(){
           secondFeed = $(".feed").find(allFeeds.url);
           cb();
-        });
+        });*/
       });
 
       // test if first and second .feed articles are distinct from one another.

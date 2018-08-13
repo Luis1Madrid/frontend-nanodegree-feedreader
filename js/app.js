@@ -30,7 +30,7 @@ var allFeeds = [
 function init() {
     // Load the first feed we've defined (index of 0).
     loadFeed(0);
-
+    console.log($(".feed .entry-link").length);
 }
 
 /* This function performs everything necessary to load a

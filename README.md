@@ -1,5 +1,12 @@
-# Starter
+# Getting Started
 The webpage is a Udacity RSS feeder to show case multiple articles within the coding community. This .html is given to students to learn how to test using Jasmine.
+
+In order to run the code successfully, please follow the below steps:
+  1. Download the entire project from "https://github.com/Luis1Madrid/frontend-nanodegree-feedreader/tree/luismadrid"
+  2. Load the index.html on you prefer browser.
+  3. Investigate the load within js/app.js to understand how the webpage works.
+  4. Load on your prefer code typing app the jasmine/spec/feedreader.js to understand the tests being performed on the webpage.
+  5. Load the css/style.css to understand the styling performed on the webpage.
 
 # Objective
 The objective of this test (using Jasmine) is to make sure the RSS feed correctly loads and multiple functionality within the webpage works as intended.
